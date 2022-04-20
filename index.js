@@ -1,11 +1,13 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT ||5000;
+const cors = require('cors');
 
 app.get('/',(req,res)=>{
     res.send('look this express for server make by zaman');
 })
 
+app.use(cors());
 
 
 /* app.get('/users', (req, res)=>{
@@ -43,4 +45,3 @@ app.get('/user/:id',(req,res)=>{
 app.listen(port,()=>{
     console.log(`port running on ${port}`);
 })
-
