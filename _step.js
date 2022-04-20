@@ -13,4 +13,10 @@
  * 5.listen to port 
  * 6.node index.js(as you start file name)
  * 7.check you borwer for that port
+ * 
+ * ------------------------------------
+ * nodemon install and package.json file scripts add for node running by one word command.. jot down in 2 line here ....
+ *     "start" : "node index.js",
+    "start-dev":"nodemon index.js", 
+ * 
  */ 
