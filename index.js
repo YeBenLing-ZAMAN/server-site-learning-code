@@ -8,6 +8,7 @@ app.get('/',(req,res)=>{
 })
 
 app.use(cors());
+app.use(express.json());
 
 
 /* app.get('/users', (req, res)=>{
@@ -41,6 +42,16 @@ app.get('/user/:id',(req,res)=>{
     const user = users.find(user=> user.id==id);
     res.send(user);
 })
+
+/* post req and respond */
+
+app.post('/user', (req, res)=>{
+    console.log(req.body);
+    res.send('post method seccess');
+})
+
+
+
 /* listen port as a port your set */
 app.listen(port,()=>{
     console.log(`port running on ${port}`);
