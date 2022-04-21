@@ -24,24 +24,37 @@ app.use(express.json());
 
 const users = [
     { id: 1, name: 'manik bhai', email: "maink@gmail.com", phone: "0924242323" },
-    { id: 2, name: 'zubayerbhai', email: "zubayer@gmail.com", phone: "0924242323" },
+    { id: 2, name: 'zubayer bhai', email: "zubayer@gmail.com", phone: "0924242323" },
     { id: 3, name: 'mamun bhai', email: "mamun@gmail.com", phone: "0924242323" },
     { id: 4, name: 'tommoy bhai', email: "tommoy@gmail.com", phone: "0924242323" },
     { id: 5, name: 'farid bhai', email: "farid@gmail.com", phone: "0924242323" },
     { id: 6, name: 'sayem bhai', email: "sayem@gmail.com", phone: "0924242323" },
 ]
 
+/**
+ * looking for 1 items then use find()
+ * lookin for more then 1 items then use filter()
+ */
+
+
+/* loaclhost eer ei req ta 5000 port dite hobe */
 app.get('/users', (req, res) => {
-    res.send(users);
-})
+    if(req.query.name){
+        const search = req.query.name.toLowerCase();
+        const matched = users.filter(u =>u.name.toLowerCase().includes(search));
+        res.send(matched); 
+    }else{
+        res.send(users);
+    }
+});
 
 
 app.get('/user/:id', (req, res) => {
     // console.log(req.params);
     const id = req.params.id;
-    const user = users.find(user => user.id == id);
+    const user = users.find(u => u.id == id);
     res.send(user);
-})
+});
 
 /* post req and respond */
 
